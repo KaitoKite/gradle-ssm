@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jimmy.dao.BookMapper">
+  <resultMap id="BaseResultMap" type="com.jimmy.domain.Book">
+    <result column="book_id" jdbcType="INTEGER" property="bookId" />
+    <result column="book_name" jdbcType="VARCHAR" property="bookName" />
+    <result column="book_counts" jdbcType="INTEGER" property="bookCounts" />
+    <result column="detail" jdbcType="VARCHAR" property="detail" />
+  </resultMap>
+  <insert id="insert" parameterType="com.jimmy.domain.Book">
+    insert into book (book_id, book_name, book_counts, 
+      detail)
+    values (#{bookId,jdbcType=INTEGER}, #{bookName,jdbcType=VARCHAR}, #{bookCounts,jdbcType=INTEGER}, 
+      #{detail,jdbcType=VARCHAR})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select book_id, book_name, book_counts, detail
+    from book
+  </select>
+</mapper>
